@@ -165,7 +165,7 @@ main > section{ padding-block: clamp(64px, 9vw, 130px); }
 .hero-grid{ position: relative; z-index: 1; display: grid; grid-template-columns: 1fr; width: 100%; }
 .hero-copy{ max-width: 640px; }
 .tag--on-photo{ background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.22); color: rgba(255,255,255,.92); backdrop-filter: blur(6px); }
-.hero-title{ margin-top: 22px; font-size: clamp(40px, 5.4vw, 70px); line-height: 1.03; letter-spacing: -0.03em; color: #fff; }
+.hero-title{ margin-top: 0; font-size: clamp(40px, 5.4vw, 70px); line-height: 1.03; letter-spacing: -0.03em; color: #fff; }
 .hero-title em{ font-style: italic; color: var(--accent); }
 .hero-sub{ margin-top: 22px; font-size: clamp(16px, 1.6vw, 19px); color: rgba(255,255,255,.72); max-width: 46ch; line-height: 1.55; }
 .hero-actions{ display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
