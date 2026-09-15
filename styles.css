@@ -210,7 +210,7 @@ main > section{ padding-block: clamp(64px, 9vw, 130px); }
    fully opaque by then), the page background right after it is
    rgb(14,14,14) — both measured, not guessed — so this bridges the
    two exactly instead of leaving a hard 1px cut between them */
-.dores-bento{ position: relative; }
+.dores-bento{ position: relative; padding-bottom: clamp(16px, 2.5vw, 40px); }
 .dores-bento::before{
   content: ""; position: absolute; top: 0; left: 0; right: 0; height: 200px;
   background: linear-gradient(180deg, rgb(7,7,7) 0%, rgb(14,14,14) 100%);
