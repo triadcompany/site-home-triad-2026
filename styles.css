@@ -240,12 +240,21 @@ main > section{ padding-block: clamp(64px, 9vw, 130px); }
    DORES — accent-rail row list (checklist-style), instead of
    the bento tile grid used elsewhere. .bento-icon stays shared
    with Pilares below, this only replaces the tile/grid layer.
+   Title left, rows right (reference layout).
    ========================================================= */
+.dores-layout{
+  display: grid;
+  grid-template-columns: minmax(240px, 360px) 1fr;
+  gap: 56px;
+  align-items: start;
+}
 .dores-rows{
-  margin-top: 44px;
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
+@media (max-width: 900px){
+  .dores-layout{ grid-template-columns: 1fr; gap: 28px; }
 }
 .dore-row{
   position: relative;
