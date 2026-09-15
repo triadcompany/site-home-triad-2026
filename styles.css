@@ -414,19 +414,6 @@ main > section{ padding-block: clamp(64px, 9vw, 130px); }
 }
 
 /* =========================================================
-   RESULTADOS — honest empty state, dashed bento tiles
-   ========================================================= */
-.resultados-grid{ margin-top: 44px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-.resultado-tile{
-  border: 1.5px dashed var(--border-strong); border-radius: var(--radius-tile); padding: 30px; text-align: center; color: var(--text-faint);
-}
-.resultado-tag{ display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-faint); border: 1px solid var(--border-strong); border-radius: var(--radius-btn); padding: 4px 12px; }
-.resultado-name{ margin-top: 16px; font-family: var(--font-display); font-weight: 700; color: var(--text-muted); }
-.resultado-desc{ margin-top: 4px; font-size: 14px; }
-
-@media (max-width: 760px){ .resultados-grid{ grid-template-columns: 1fr; } }
-
-/* =========================================================
    FAQ — accordion inside cards, not hairline rows
    ========================================================= */
 .accordion{ margin-top: 44px; display: flex; flex-direction: column; gap: 14px; }
