@@ -137,6 +137,16 @@ ul{ margin: 0; padding: 0; list-style: none; }
   :root:not([data-theme="light"]) .site-header.is-scrolled{ background: rgba(22,22,22,.78); }
 }
 
+/* header floats transparent over the hero photo before scroll, so its
+   text is forced light regardless of theme; once scrolled it sits on an
+   opaque bg that already matches the theme tokens, so no override needed */
+.site-header:not(.is-scrolled) .brand-name,
+.site-header:not(.is-scrolled) .brand-sub,
+.site-header:not(.is-scrolled) .main-nav a{ color: rgba(255,255,255,.92); }
+.site-header:not(.is-scrolled) .main-nav a:hover{ color: #fff; }
+.site-header:not(.is-scrolled) .menu-toggle span{ background: #fff; }
+.site-header:not(.is-scrolled) .theme-toggle{ background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.35); color: #fff; }
+
 .header-inner{ height: 76px; display: flex; align-items: center; gap: 24px; }
 .brand{ display: flex; align-items: center; gap: 10px; margin-right: auto; }
 .brand-word{ display: flex; flex-direction: column; line-height: 1; }
@@ -200,32 +210,36 @@ main > section{ padding-block: clamp(64px, 9vw, 130px); }
 @media (prefers-reduced-motion: reduce){ .reveal{ opacity: 1; transform: none; transition: none; } }
 
 /* =========================================================
-   HERO — light, kinetic type, small photo + soft accent blob.
-   Full opposite of the car-dealership site's dark full-bleed
-   photo hero: here the type is the star, the photo is a detail.
+   HERO — full-bleed photo background, text always light
+   regardless of site theme (the photo dictates hero contrast,
+   same principle as the car-dealership site's dark hero).
    ========================================================= */
-.hero{ position: relative; overflow: hidden; padding-top: clamp(140px, 16vw, 200px); padding-bottom: clamp(80px, 9vw, 130px); }
-.hero-blob{
-  position: absolute; top: -18%; right: -12%; width: 640px; height: 640px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(249,115,22,.32), rgba(249,115,22,0) 70%);
-  pointer-events: none; z-index: 0;
+.hero{ position: relative; overflow: hidden; padding-top: clamp(140px, 16vw, 200px); padding-bottom: clamp(120px, 13vw, 170px); min-height: 640px; display: flex; align-items: center; }
+.hero-bg{ position: absolute; inset: 0; z-index: 0; background: #0c0c0c; }
+.hero-bg img{ width: 100%; height: 100%; object-fit: cover; object-position: 76% 32%; }
+.hero-bg::after{
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(115deg, rgba(8,8,8,.95) 0%, rgba(8,8,8,.88) 26%, rgba(8,8,8,.58) 46%, rgba(8,8,8,.2) 66%, rgba(8,8,8,0) 82%);
 }
-.hero-grid{ position: relative; z-index: 1; display: grid; grid-template-columns: 1.1fr .9fr; gap: 64px; align-items: center; }
-.hero-title{ margin-top: 22px; font-size: clamp(40px, 5.4vw, 70px); line-height: 1.03; letter-spacing: -0.03em; }
+.hero-grid{ position: relative; z-index: 1; display: grid; grid-template-columns: 1fr; width: 100%; }
+.hero-copy{ max-width: 640px; }
+.tag--on-photo{ background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.22); color: rgba(255,255,255,.92); backdrop-filter: blur(6px); }
+.hero-title{ margin-top: 22px; font-size: clamp(40px, 5.4vw, 70px); line-height: 1.03; letter-spacing: -0.03em; color: #fff; }
 .hero-title em{ font-style: italic; color: var(--accent); }
-.hero-sub{ margin-top: 22px; font-size: clamp(16px, 1.6vw, 19px); color: var(--text-muted); max-width: 46ch; line-height: 1.55; }
+.hero-sub{ margin-top: 22px; font-size: clamp(16px, 1.6vw, 19px); color: rgba(255,255,255,.72); max-width: 46ch; line-height: 1.55; }
 .hero-actions{ display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
+.hero-actions .btn-ghost{
+  background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.35); color: #fff;
+}
+.hero-actions .btn-ghost:hover{ background: rgba(255,255,255,.16); border-color: #fff; color: #fff; }
 .hero-author{ display: flex; align-items: center; gap: 12px; margin-top: 40px; }
-.hero-author img{ width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
-.hero-author p{ font-size: 13px; color: var(--text-faint); }
-.hero-author strong{ color: var(--text-muted); }
+.hero-author img{ width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 1px solid rgba(255,255,255,.3); }
+.hero-author p{ font-size: 13px; color: rgba(255,255,255,.6); }
+.hero-author strong{ color: rgba(255,255,255,.92); }
 
-.hero-visual{ position: relative; }
-.hero-photo-frame{ border-radius: var(--radius-tile); overflow: hidden; aspect-ratio: 16/10; box-shadow: var(--shadow); background: #101010; }
-.hero-photo-frame img{ width: 100%; height: 100%; object-fit: cover; object-position: 66% 30%; }
 .hero-float-card{
-  position: absolute; left: -28px; bottom: 32px; background: var(--surface); border: 1px solid var(--border);
-  border-radius: 20px; padding: 18px 22px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; gap: 2px;
+  position: absolute; z-index: 1; right: 6%; bottom: 12%; background: var(--surface); border: 1px solid var(--border);
+  border-radius: 20px; padding: 18px 22px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 2px;
   max-width: 190px;
 }
 .hero-float-num{ font-family: var(--font-display); font-weight: 800; font-size: 22px; color: var(--accent); }
@@ -233,10 +247,10 @@ main > section{ padding-block: clamp(64px, 9vw, 130px); }
 .hero-float-note{ font-size: 10px; color: var(--text-faint); margin-top: 4px; }
 
 @media (max-width: 900px){
-  .hero-grid{ grid-template-columns: 1fr; gap: 36px; }
-  .hero-visual{ order: -1; }
-  .hero-float-card{ left: 16px; }
-  .hero-blob{ width: 420px; height: 420px; }
+  .hero{ min-height: 560px; padding-bottom: 200px; }
+  .hero-bg::after{ background: linear-gradient(180deg, rgba(8,8,8,.9) 0%, rgba(8,8,8,.78) 40%, rgba(8,8,8,.55) 65%, rgba(8,8,8,.4) 100%); }
+  .hero-bg img{ object-position: 70% 28%; }
+  .hero-float-card{ left: 20px; right: 20px; bottom: 20px; max-width: none; padding-right: 84px; }
 }
 
 /* =========================================================
