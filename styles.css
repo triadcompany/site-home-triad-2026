@@ -194,6 +194,18 @@ main > section{ padding-block: clamp(64px, 9vw, 130px); }
   .hero-float-card{ left: 20px; right: 20px; bottom: 20px; max-width: none; padding-right: 84px; }
 }
 
+/* seam fade: hero's bottom-most pixel is rgb(7,7,7) (photo scrim,
+   fully opaque by then), the page background right after it is
+   rgb(14,14,14) — both measured, not guessed — so this bridges the
+   two exactly instead of leaving a hard 1px cut between them */
+.dores-bento{ position: relative; }
+.dores-bento::before{
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 200px;
+  background: linear-gradient(180deg, rgb(7,7,7) 0%, rgb(14,14,14) 100%);
+  z-index: 0; pointer-events: none;
+}
+.dores-bento > .container{ position: relative; z-index: 1; }
+
 /* =========================================================
    BENTO GRID — shared tile system used by Dores and Pilares.
    Uniform cell grid (no spans), variety comes from tile color,
