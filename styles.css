@@ -157,6 +157,7 @@ main > section{ padding-block: clamp(64px, 9vw, 130px); }
    ========================================================= */
 .hero{ position: relative; overflow: hidden; padding-top: clamp(140px, 16vw, 200px); padding-bottom: clamp(120px, 13vw, 170px); min-height: 640px; display: flex; align-items: center; }
 .hero-bg{ position: absolute; inset: 0; z-index: 0; background: #0c0c0c; }
+.hero-bg picture{ display: block; width: 100%; height: 100%; }
 .hero-bg img{ width: 100%; height: 100%; object-fit: cover; object-position: 76% 32%; }
 .hero-bg::after{
   content: ""; position: absolute; inset: 0;
