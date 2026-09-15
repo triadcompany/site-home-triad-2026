@@ -189,14 +189,14 @@ main > section{ padding-block: clamp(64px, 9vw, 130px); }
 .hero-float-note{ font-size: 10px; color: var(--text-faint); margin-top: 4px; }
 
 @media (max-width: 900px){
-  .hero{ min-height: 560px; }
+  .hero{ min-height: 100dvh; }
   .hero-bg::after{ background: linear-gradient(180deg, rgba(8,8,8,.9) 0%, rgba(8,8,8,.78) 40%, rgba(8,8,8,.55) 65%, rgba(8,8,8,.4) 100%); }
-  .hero-bg img{ object-position: 70% 28%; }
+  .hero-bg img{ object-position: 65% 42%; }
   .hero-float-card{ display: none; }
   .hero-grid{ position: absolute; top: 92px; left: 20px; right: 20px; bottom: 20px; width: auto; display: flex; }
   .hero-copy{ width: 100%; max-width: none; display: flex; flex-direction: column; text-align: center; }
   .hero-sub{ margin-inline: auto; }
-  .hero-actions{ margin-top: auto; padding-top: 28px; }
+  .hero-actions{ margin-top: 28px; }
 }
 
 @media (max-width: 640px){
