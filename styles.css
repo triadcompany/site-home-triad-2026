@@ -246,7 +246,8 @@ main > section{ padding-block: clamp(64px, 9vw, 130px); }
   display: grid;
   grid-template-columns: minmax(240px, 360px) 1fr;
   gap: 56px;
-  align-items: start;
+  align-items: center;
+  margin-top: 64px;
 }
 .dores-rows{
   display: flex;
@@ -254,7 +255,7 @@ main > section{ padding-block: clamp(64px, 9vw, 130px); }
   gap: 12px;
 }
 @media (max-width: 900px){
-  .dores-layout{ grid-template-columns: 1fr; gap: 28px; }
+  .dores-layout{ grid-template-columns: 1fr; gap: 28px; align-items: start; }
 }
 .dore-row{
   position: relative;
