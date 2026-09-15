@@ -221,8 +221,8 @@ main > section{ padding-block: clamp(64px, 9vw, 130px); }
 .hero-author strong{ color: var(--text-muted); }
 
 .hero-visual{ position: relative; }
-.hero-photo-frame{ border-radius: var(--radius-tile); overflow: hidden; aspect-ratio: 4/5; box-shadow: var(--shadow); }
-.hero-photo-frame img{ width: 100%; height: 100%; object-fit: cover; object-position: 50% 15%; }
+.hero-photo-frame{ border-radius: var(--radius-tile); overflow: hidden; aspect-ratio: 16/10; box-shadow: var(--shadow); background: #101010; }
+.hero-photo-frame img{ width: 100%; height: 100%; object-fit: cover; object-position: 66% 30%; }
 .hero-float-card{
   position: absolute; left: -28px; bottom: 32px; background: var(--surface); border: 1px solid var(--border);
   border-radius: 20px; padding: 18px 22px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; gap: 2px;
