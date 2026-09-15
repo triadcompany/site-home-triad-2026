@@ -3,20 +3,6 @@
 
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* ---------- theme toggle (light / dark) ---------- */
-  var themeToggle = document.getElementById("themeToggle");
-  if (themeToggle) {
-    themeToggle.addEventListener("click", function () {
-      var root = document.documentElement;
-      var current = root.getAttribute("data-theme");
-      var systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      var isDark = current ? current === "dark" : systemDark;
-      var next = isDark ? "light" : "dark";
-      root.setAttribute("data-theme", next);
-      try { localStorage.setItem("triad-theme", next); } catch (e) {}
-    });
-  }
-
   /* ---------- header solid state on scroll (sentinel, no scroll listener) ---------- */
   var header = document.querySelector(".site-header");
   var sentinel = document.getElementById("scrollSentinel");

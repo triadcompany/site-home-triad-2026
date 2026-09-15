@@ -1,8 +1,7 @@
 /* =========================================================
    TRIAD COMPANY — site institucional
-   Direção: claro por padrão (oposto do site de loja de carro,
-   que é escuro por padrão), grid bento assimétrico, cards com
-   sombra e raio grande. Mesma marca, personagem visual diferente.
+   Direção: preto fixo (sem alternância de tema), grid bento
+   assimétrico, cards com sombra e raio grande.
    Raio: cards/bento = 28px, botões = pill, inputs = 14px.
    ========================================================= */
 :root{
@@ -12,20 +11,19 @@
   --accent-contrast: #1A1A1A;
   --navy: #1E3A8A;
 
-  --dark: #1E1E1E;
-  --dark-rgb: 30,30,30;
+  --dark: #050505;
+  --dark-rgb: 5,5,5;
 
-  /* light theme (default) */
-  --bg: #FFFFFF;
-  --bg-soft: #F4F4F6;
-  --surface: #FFFFFF;
-  --border: rgba(30,30,30,.10);
-  --border-strong: rgba(30,30,30,.18);
-  --text: #1E1E1E;
-  --text-muted: #63636b;
-  --text-faint: #97979e;
-  --shadow: 0 18px 40px -20px rgba(30,30,30,.22);
-  --shadow-sm: 0 10px 24px -16px rgba(30,30,30,.18);
+  --bg: #0e0e0e;
+  --bg-soft: #161616;
+  --surface: #1a1a1a;
+  --border: rgba(255,255,255,.10);
+  --border-strong: rgba(255,255,255,.18);
+  --text: #F2F2F2;
+  --text-muted: #a8a8ad;
+  --text-faint: #74747a;
+  --shadow: 0 18px 40px -18px rgba(0,0,0,.55);
+  --shadow-sm: 0 10px 24px -14px rgba(0,0,0,.5);
 
   --font-display: "Archivo", system-ui, sans-serif;
   --font-body: "Manrope", system-ui, sans-serif;
@@ -37,33 +35,6 @@
 
   --container: 1240px;
   --ease: cubic-bezier(.16,1,.3,1);
-}
-
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg: #161616;
-    --bg-soft: #1f1f1f;
-    --surface: #202020;
-    --border: rgba(255,255,255,.10);
-    --border-strong: rgba(255,255,255,.18);
-    --text: #F2F2F2;
-    --text-muted: #a8a8ad;
-    --text-faint: #74747a;
-    --shadow: 0 18px 40px -18px rgba(0,0,0,.55);
-    --shadow-sm: 0 10px 24px -14px rgba(0,0,0,.5);
-  }
-}
-:root[data-theme="dark"]{
-  --bg: #161616;
-  --bg-soft: #1f1f1f;
-  --surface: #202020;
-  --border: rgba(255,255,255,.10);
-  --border-strong: rgba(255,255,255,.18);
-  --text: #F2F2F2;
-  --text-muted: #a8a8ad;
-  --text-faint: #74747a;
-  --shadow: 0 18px 40px -18px rgba(0,0,0,.55);
-  --shadow-sm: 0 10px 24px -14px rgba(0,0,0,.5);
 }
 
 body{ transition: background-color .25s var(--ease), color .25s var(--ease); }
@@ -117,8 +88,8 @@ ul{ margin: 0; padding: 0; list-style: none; }
 .btn-nav{ padding: 11px 22px; font-size: 14px; }
 
 /* =========================================================
-   HEADER — light glass, floats over everything, no dark lock
-   this time (site is light-first, header just tints on scroll)
+   HEADER — floats transparent over the hero, tints solid dark
+   on scroll (sentinel-driven, see script.js)
    ========================================================= */
 #scrollSentinel{ position: absolute; top: 0; height: 1px; width: 1px; }
 .site-header{
@@ -127,25 +98,11 @@ ul{ margin: 0; padding: 0; list-style: none; }
   transition: background .3s var(--ease), border-color .3s var(--ease), backdrop-filter .3s var(--ease);
 }
 .site-header.is-scrolled{
-  background: rgba(255,255,255,.78);
+  background: rgba(22,22,22,.78);
   backdrop-filter: blur(16px) saturate(160%);
   -webkit-backdrop-filter: blur(16px) saturate(160%);
   border-bottom-color: var(--border);
 }
-:root[data-theme="dark"] .site-header.is-scrolled{ background: rgba(22,22,22,.78); }
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]) .site-header.is-scrolled{ background: rgba(22,22,22,.78); }
-}
-
-/* header floats transparent over the hero photo before scroll, so its
-   text is forced light regardless of theme; once scrolled it sits on an
-   opaque bg that already matches the theme tokens, so no override needed */
-.site-header:not(.is-scrolled) .brand-name,
-.site-header:not(.is-scrolled) .brand-sub,
-.site-header:not(.is-scrolled) .main-nav a{ color: rgba(255,255,255,.92); }
-.site-header:not(.is-scrolled) .main-nav a:hover{ color: #fff; }
-.site-header:not(.is-scrolled) .menu-toggle span{ background: #fff; }
-.site-header:not(.is-scrolled) .theme-toggle{ background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.35); color: #fff; }
 
 .header-inner{ height: 76px; display: flex; align-items: center; gap: 24px; }
 .brand{ display: flex; align-items: center; gap: 10px; margin-right: auto; }
@@ -160,22 +117,6 @@ ul{ margin: 0; padding: 0; list-style: none; }
 .main-nav{ display: flex; align-items: center; gap: 30px; }
 .main-nav a{ font-size: 14px; font-weight: 600; color: var(--text-muted); transition: color .2s var(--ease); }
 .main-nav a:hover{ color: var(--text); }
-
-.theme-toggle{
-  flex-shrink: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
-  border-radius: 50%; border: 1px solid var(--border-strong); background: var(--surface); color: var(--text);
-  cursor: pointer; transition: border-color .2s var(--ease), transform .2s var(--ease);
-}
-.theme-toggle:hover{ border-color: var(--accent); transform: translateY(-1px); }
-.theme-toggle .icon-moon{ display: none; }
-@media (prefers-color-scheme: dark){
-  html:not([data-theme="light"]) .theme-toggle .icon-sun{ display: none; }
-  html:not([data-theme="light"]) .theme-toggle .icon-moon{ display: block; }
-}
-html[data-theme="dark"] .theme-toggle .icon-sun{ display: none; }
-html[data-theme="dark"] .theme-toggle .icon-moon{ display: block; }
-html[data-theme="light"] .theme-toggle .icon-sun{ display: block; }
-html[data-theme="light"] .theme-toggle .icon-moon{ display: none; }
 
 .menu-toggle{ display: none; flex-direction: column; justify-content: center; gap: 5px; width: 40px; height: 40px; background: none; border: none; cursor: pointer; }
 .menu-toggle span{ width: 20px; height: 2px; background: var(--text); margin-inline: auto; transition: transform .25s var(--ease), opacity .25s var(--ease); }
@@ -289,15 +230,6 @@ main > section{ padding-block: clamp(64px, 9vw, 130px); }
   font-family: var(--font-display); font-weight: 700; font-size: clamp(18px, 2vw, 22px); line-height: 1.4; color: var(--accent);
 }
 
-/* this section stays black in both themes, continuing the hero's
-   dark flow instead of switching back to the page's light surface */
-.dores-bento{ background: #121212; }
-.dores-bento .tag{ background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.18); color: rgba(255,255,255,.82); }
-.dores-bento .section-title{ color: #fff; }
-.dores-bento .bento-tile{ background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.09); box-shadow: none; }
-.dores-bento .bento-tile h3{ color: rgba(255,255,255,.92); }
-.dores-bento .bento-tile--dark{ background: #050505; }
-.dores-bento .bento-icon{ background: rgba(249,115,22,.16); }
 
 @media (max-width: 900px){ .bento-grid{ grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px){ .bento-grid{ grid-template-columns: 1fr; } }
@@ -443,11 +375,9 @@ main > section{ padding-block: clamp(64px, 9vw, 130px); }
 .field input:focus, .field select:focus{ outline: none; border-color: var(--accent); }
 .field select{
   appearance: none; -webkit-appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%2363636b' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%23F2F2F2' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat; background-position: right 14px center; padding-right: 34px;
 }
-:root[data-theme="dark"] .field select{ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%23F2F2F2' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); }
-@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .field select{ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%23F2F2F2' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); } }
 .form-submit{ margin-top: 6px; width: 100%; }
 .form-feedback{ font-size: 14px; color: var(--text-muted); min-height: 1.2em; }
 .form-feedback a{ color: var(--accent); font-weight: 700; }
