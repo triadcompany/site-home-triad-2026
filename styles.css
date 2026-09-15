@@ -188,10 +188,15 @@ main > section{ padding-block: clamp(64px, 9vw, 130px); }
 .hero-float-note{ font-size: 10px; color: var(--text-faint); margin-top: 4px; }
 
 @media (max-width: 900px){
-  .hero{ min-height: 560px; padding-bottom: 200px; }
+  .hero{ min-height: 560px; padding-top: 116px; padding-bottom: 160px; }
   .hero-bg::after{ background: linear-gradient(180deg, rgba(8,8,8,.9) 0%, rgba(8,8,8,.78) 40%, rgba(8,8,8,.55) 65%, rgba(8,8,8,.4) 100%); }
   .hero-bg img{ object-position: 70% 28%; }
   .hero-float-card{ left: 20px; right: 20px; bottom: 20px; max-width: none; padding-right: 84px; }
+}
+
+@media (max-width: 640px){
+  .hero-actions{ flex-direction: column; align-items: stretch; margin-top: 28px; gap: 12px; }
+  .hero-actions .btn{ width: 100%; text-align: center; }
 }
 
 /* seam fade: hero's bottom-most pixel is rgb(7,7,7) (photo scrim,
