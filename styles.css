@@ -376,19 +376,42 @@ main > section{ padding-block: clamp(64px, 9vw, 130px); }
 /* =========================================================
    DIAGNÓSTICO — step cards in a row, connected by a hairline
    ========================================================= */
-.steps-grid{ margin-top: 44px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-.step-card{
-  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-tile);
-  padding: 30px; box-shadow: var(--shadow-sm);
+/* journey — vertical timeline, connecting line grows as each
+   step scrolls into view (reuses the site's existing .reveal /
+   .is-visible IntersectionObserver, no extra scroll listener) */
+.journey{ margin-top: 52px; max-width: 640px; }
+.journey-step{ display: flex; gap: 26px; }
+.journey-step:not(:last-child){ padding-bottom: 44px; }
+.journey-node{ position: relative; flex-shrink: 0; }
+.journey-num{
+  width: 52px; height: 52px; border-radius: 50%; background: var(--accent); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-weight: 800; font-size: 18px;
+  position: relative; z-index: 1;
 }
-.step-num{
-  width: 40px; height: 40px; border-radius: 50%; background: var(--accent); color: #fff;
-  display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 800; font-size: 15px;
+.journey-node::before,
+.journey-node::after{
+  content: ""; position: absolute; top: 52px; left: 50%; bottom: -44px;
+  width: 2px; transform: translateX(-50%);
 }
-.step-card h3{ margin-top: 18px; font-size: 17px; }
-.step-card p{ margin-top: 8px; color: var(--text-muted); font-size: 14.5px; line-height: 1.55; }
+.journey-node::before{ background: var(--border); }
+.journey-node::after{
+  background: var(--accent); transform: translateX(-50%) scaleY(0); transform-origin: top;
+  transition: transform 1s var(--ease);
+}
+.journey-step.is-visible .journey-node::after{ transform: translateX(-50%) scaleY(1); }
+.journey-step:last-child .journey-node::before,
+.journey-step:last-child .journey-node::after{ content: none; }
+.journey-body{ padding-top: 6px; }
+.journey-body h3{ font-size: 18px; }
+.journey-body p{ margin-top: 8px; color: var(--text-muted); font-size: 14.5px; line-height: 1.55; }
 
-@media (max-width: 760px){ .steps-grid{ grid-template-columns: 1fr; } }
+@media (max-width: 560px){
+  .journey-step{ gap: 18px; }
+  .journey-step:not(:last-child){ padding-bottom: 32px; }
+  .journey-num{ width: 44px; height: 44px; font-size: 16px; }
+  .journey-node::before, .journey-node::after{ top: 44px; bottom: -32px; }
+}
 
 /* =========================================================
    RESULTADOS — honest empty state, dashed bento tiles
