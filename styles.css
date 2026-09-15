@@ -289,6 +289,16 @@ main > section{ padding-block: clamp(64px, 9vw, 130px); }
   font-family: var(--font-display); font-weight: 700; font-size: clamp(18px, 2vw, 22px); line-height: 1.4; color: var(--accent);
 }
 
+/* this section stays black in both themes, continuing the hero's
+   dark flow instead of switching back to the page's light surface */
+.dores-bento{ background: #121212; }
+.dores-bento .tag{ background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.18); color: rgba(255,255,255,.82); }
+.dores-bento .section-title{ color: #fff; }
+.dores-bento .bento-tile{ background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.09); box-shadow: none; }
+.dores-bento .bento-tile h3{ color: rgba(255,255,255,.92); }
+.dores-bento .bento-tile--dark{ background: #050505; }
+.dores-bento .bento-icon{ background: rgba(249,115,22,.16); }
+
 @media (max-width: 900px){ .bento-grid{ grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px){ .bento-grid{ grid-template-columns: 1fr; } }
 
