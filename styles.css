@@ -195,8 +195,8 @@ main > section{ padding-block: clamp(64px, 9vw, 130px); }
 }
 
 @media (max-width: 640px){
-  .hero-actions{ flex-direction: column; align-items: stretch; margin-top: 28px; gap: 10px; }
-  .hero-actions .btn{ width: 100%; text-align: center; padding: 13px 24px; font-size: 14px; }
+  .hero-actions{ flex-direction: column; align-items: flex-start; margin-top: 24px; gap: 10px; }
+  .hero-actions .btn{ width: auto; padding: 11px 22px; font-size: 13px; }
 }
 
 /* seam fade: hero's bottom-most pixel is rgb(7,7,7) (photo scrim,
