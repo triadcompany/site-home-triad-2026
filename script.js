@@ -83,7 +83,7 @@
     leadForm.addEventListener("submit", function (e) {
       e.preventDefault();
       formFeedback.innerHTML =
-        'Formulário em configuração ainda. Por enquanto, fala com a gente direto no <a href="https://wa.me/5500000000000" target="_blank" rel="noopener">WhatsApp</a>.';
+        'Formulário em configuração ainda. Por enquanto, fala com a gente direto no <a href="https://wa.me/5547996550132?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20tenho%20interesse%20em%20aumentar%20as%20minhas%20vendas%20atrav%C3%A9s%20do%20m%C3%A9todo%20TRIAD." target="_blank" rel="noopener">WhatsApp</a>.';
     });
   }
 })();
