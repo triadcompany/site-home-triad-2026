@@ -342,28 +342,6 @@ main > section{ padding-block: clamp(64px, 9vw, 130px); }
 @media (max-width: 900px){ .fundador-panel{ grid-template-columns: 1fr; gap: 28px; } }
 
 /* =========================================================
-   PACOTES — classic pricing cards (deliberate contrast with
-   the hairline-panel pricing used on the other Triad site)
-   ========================================================= */
-.pacotes-grid{ margin-top: 44px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; align-items: stretch; }
-.pacote-card{
-  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-tile);
-  padding: 34px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; position: relative;
-}
-.pacote-card--featured{ border-color: var(--accent); box-shadow: var(--shadow); transform: translateY(-10px); }
-.pacote-flag{ display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; color: var(--accent); margin-bottom: 14px; }
-.pacote-flag::before{ content: ""; width: 18px; height: 1.5px; background: var(--accent); }
-.pacote-card h3{ font-size: 22px; }
-.pacote-desc{ margin-top: 8px; color: var(--text-muted); font-size: 14px; }
-.pacote-list{ margin-top: 22px; display: flex; flex-direction: column; gap: 12px; flex-grow: 1; }
-.pacote-list li{ font-size: 14px; color: var(--text); padding-left: 22px; position: relative; }
-.pacote-list li::before{ content: ""; position: absolute; left: 0; top: 7px; width: 10px; height: 10px; border-radius: 3px; background: var(--accent); }
-.pacote-card .btn{ margin-top: 28px; width: 100%; white-space: normal; text-align: center; line-height: 1.3; }
-.pacotes-note{ margin-top: 40px; text-align: center; color: var(--text-faint); font-size: 14px; max-width: 60ch; margin-inline: auto; }
-
-@media (max-width: 900px){ .pacotes-grid{ grid-template-columns: 1fr; } .pacote-card--featured{ transform: none; } }
-
-/* =========================================================
    DIAGNÓSTICO — step cards in a row, connected by a hairline
    ========================================================= */
 /* journey — vertical timeline, connecting line grows as each
