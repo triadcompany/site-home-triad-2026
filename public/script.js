@@ -58,21 +58,16 @@
     });
   }
 
-  /* ---------- FAQ accordion ---------- */
+  /* ---------- FAQ accordion (abre/fecha via CSS, JS só alterna aria-expanded) ---------- */
   document.querySelectorAll(".accordion-trigger").forEach(function (trigger) {
-    var panel = trigger.nextElementSibling;
     trigger.addEventListener("click", function () {
       var isOpen = trigger.getAttribute("aria-expanded") === "true";
 
       document.querySelectorAll(".accordion-trigger").forEach(function (t) {
-        if (t !== trigger) {
-          t.setAttribute("aria-expanded", "false");
-          t.nextElementSibling.style.maxHeight = "0px";
-        }
+        if (t !== trigger) t.setAttribute("aria-expanded", "false");
       });
 
       trigger.setAttribute("aria-expanded", isOpen ? "false" : "true");
-      panel.style.maxHeight = isOpen ? "0px" : panel.scrollHeight + "px";
     });
   });
 
