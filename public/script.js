@@ -76,14 +76,52 @@
     });
   });
 
-  /* ---------- lead form (no backend yet, honest inline feedback) ---------- */
+  /* ---------- lead form (envia pro backend, que manda WhatsApp) ---------- */
   var leadForm = document.getElementById("leadForm");
   var formFeedback = document.getElementById("formFeedback");
+  var WHATSAPP_FALLBACK_LINK =
+    '<a href="https://wa.me/5547996550132?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20tenho%20interesse%20em%20aumentar%20as%20minhas%20vendas%20atrav%C3%A9s%20do%20m%C3%A9todo%20TRIAD." target="_blank" rel="noopener">WhatsApp</a>';
+
   if (leadForm && formFeedback) {
     leadForm.addEventListener("submit", function (e) {
       e.preventDefault();
-      formFeedback.innerHTML =
-        'Formulário em configuração ainda. Por enquanto, fala com a gente direto no <a href="https://wa.me/5547996550132?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20tenho%20interesse%20em%20aumentar%20as%20minhas%20vendas%20atrav%C3%A9s%20do%20m%C3%A9todo%20TRIAD." target="_blank" rel="noopener">WhatsApp</a>.';
+
+      var submitBtn = leadForm.querySelector(".form-submit");
+      var originalLabel = submitBtn ? submitBtn.textContent : "";
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Enviando...";
+      }
+      formFeedback.textContent = "";
+
+      var data = Object.fromEntries(new FormData(leadForm).entries());
+
+      fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      })
+        .then(function (res) {
+          if (!res.ok) throw new Error("request_failed");
+          return res.json();
+        })
+        .then(function () {
+          leadForm.reset();
+          formFeedback.innerHTML =
+            "Recebemos seus dados! Já te chamamos no WhatsApp pra marcar a reunião.";
+        })
+        .catch(function () {
+          formFeedback.innerHTML =
+            "Não conseguimos enviar agora. Fala com a gente direto no " +
+            WHATSAPP_FALLBACK_LINK +
+            ".";
+        })
+        .finally(function () {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalLabel;
+          }
+        });
     });
   }
 })();
