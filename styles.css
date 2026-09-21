@@ -179,20 +179,10 @@ main > section{ padding-block: clamp(64px, 9vw, 130px); }
 .hero-author p{ font-size: 13px; color: rgba(255,255,255,.6); }
 .hero-author strong{ color: rgba(255,255,255,.92); }
 
-.hero-float-card{
-  position: absolute; z-index: 1; right: 6%; bottom: 12%; background: var(--surface); border: 1px solid var(--border);
-  border-radius: 20px; padding: 18px 22px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 2px;
-  max-width: 190px;
-}
-.hero-float-num{ font-family: var(--font-display); font-weight: 800; font-size: 22px; color: var(--accent); }
-.hero-float-label{ font-size: 12px; color: var(--text-faint); line-height: 1.4; }
-.hero-float-note{ font-size: 10px; color: var(--text-faint); margin-top: 4px; }
-
 @media (max-width: 900px){
   .hero{ min-height: 100dvh; }
   .hero-bg::after{ background: linear-gradient(180deg, rgba(8,8,8,.9) 0%, rgba(8,8,8,.78) 40%, rgba(8,8,8,.55) 65%, rgba(8,8,8,.4) 100%); }
   .hero-bg img{ object-position: 65% 42%; }
-  .hero-float-card{ display: none; }
   .hero-grid{ position: absolute; top: 92px; left: 20px; right: 20px; bottom: 84px; width: auto; display: flex; }
   .hero-copy{ width: 100%; max-width: none; display: flex; flex-direction: column; text-align: center; }
   .hero-sub{ margin-inline: auto; }
