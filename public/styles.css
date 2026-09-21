@@ -148,6 +148,9 @@ main > section{ padding-block: clamp(64px, 9vw, 130px); }
 
 .reveal{ opacity: 0; transform: translateY(26px); transition: opacity .7s var(--ease), transform .7s var(--ease); transition-delay: var(--reveal-delay, 0ms); }
 .reveal.is-visible{ opacity: 1; transform: translateY(0); }
+/* headings get a touch more travel + duration than body text, so the
+   motion carries a sense of weight instead of everything moving alike */
+h1.reveal, h2.reveal{ transform: translateY(36px); transition-duration: .85s; }
 @media (prefers-reduced-motion: reduce){ .reveal{ opacity: 1; transform: none; transition: none; } }
 
 /* =========================================================
